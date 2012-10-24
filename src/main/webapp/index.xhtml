@@ -1,0 +1,75 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core" >
+    <head jsfc="h:head">
+        <meta charset="utf-8" />
+        <title>Form HTML5 + JSF</title>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="css/css.css" />
+    </head>
+<body jsfc="h:body">
+<header>
+</header>
+	<form jsfc="h:form" id="formulario" class="formPric" action="">
+	<h:messages/>
+	<h1>Form HTML5 + JSF</h1>
+	<fildset>
+		<legend>Search</legend>
+		<input jsfc="h:inputText" id="search" class="campos campo-gdr" type="search" value="#{html5MB.search}" placeholder="Search" required="true" autofocus="true"/>
+		<h:outputText value="Valor digitado: #{html5MB.search}" rendered="#{html5MB.search != null}" />
+		<input jsfc="h:commandButton" class="btn mg-top10 fRig" type="submit" value="Buscar" action="#{html5MB.buscar}" />	
+	</fildset>
+	<fildset>
+		<legend>Login</legend>
+			<input jsfc="h:inputText" id="e-mail" class="campos campo-gdr" type="email" value="#{html5MB.email}" placeholder="E-mail" autocomplete="on"/>
+			<h:outputText value="Valor digitado: #{html5MB.email}" rendered="#{html5MB.email != null}" />
+			<input jsfc="h:inputSecret" id="password" class="campos campo-gdr mg-top10" value="#{html5MB.password}" required="true"/>
+			<h:outputText value="Valor digitado: #{html5MB.password}" rendered="#{html5MB.password != null}" />
+			<input jsfc="h:commandButton" class="btn mg-top10 fRig" type="submit" value="Enviar" action="#{html5MB.enviar}" />
+	</fildset>
+	<fildset>
+		<legend>I was born in:</legend>
+		<input jsfc="h:inputText" id="date" class="campos campo-pqn" type="date" value="#{html5MB.date}" required="true">
+			<f:convertDateTime pattern="yyyy-MM-dd" locale="pt,BR" timeZone="GMT-3"/>
+		</input>
+		<h:outputText value="Data selecionada: #{html5MB.date}" rendered="#{html5MB.search != null}" />	
+	</fildset>
+	<fildset>
+		<legend>What is your age?:</legend>
+		<input jsfc="h:inputText" id="number" class="campos campo-gdr" type="number" value="#{html5MB.number}" min="0" max="20" step="5" required="true">
+			<f:convertNumber/>
+		</input>
+		<h:outputText value="Numero selecionado: #{html5MB.number}" rendered="#{html5MB.number != null}" />
+	</fildset>
+	<fildset>
+		<legend>Date with <a class="lnk-externo" href="http://www.whatwg.org/specs/web-apps/current-work/#the-pattern-attribute" title="">pattern</a> - <span class="mini">Regex - [0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])</span>:</legend>
+			<input jsfc="h:inputText" id="dataValidacao" class="campos campo-pqn" type="text" value="#{html5MB.dataValidacao}" name="dataValidacao" placeholder="YYYY-MM-DD" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" required="true">
+				<f:convertDateTime pattern="yyyy-MM-dd" locale="pt,BR" timeZone="GMT-3"/>	
+			</input>
+			<h:outputText value="Data digitada: #{html5MB.dataValidacao}" rendered="#{html5MB.dataValidacao != null}" />
+	</fildset>
+	<fildset>
+		<legend>Select price range:</legend>
+		<input jsfc="h:inputText" id="slider-preco" type="range" value="#{html5MB.range}" min="0" max="20" step="5" required="true"  onchange="printValue('formulario:slider-preco','range-value')">
+			<f:convertNumber/>
+		</input>
+		<input id="range-value" type="text"/>
+		<h:outputText value="Valor escolhido: #{html5MB.range}" rendered="#{html5MB.range != null}" />
+	</fildset>
+	</form>
+<footer>
+	<p>Apenas um experimento.</p>
+</footer>
+<script>
+	function printValue(sliderID, textbox) {
+            var x = document.getElementById(textbox);
+            var y = document.getElementById(sliderID);
+            x.value = y.value;
+        }
+        window.onload = function() { 
+			printValue('formulario:slider-preco','range-value');
+        }
+
+</script>
+</body>
+</html>
