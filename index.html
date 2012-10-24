@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Form HTML5 + JSF</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="css/css.css">
+    </head>
+<body>
+<header>
+</header>
+	<form class="formPric" action="">
+	<h1>Form HTML5 + JSF</h1>
+	<fildset>
+		<legend>Search</legend>
+		<input class="campos campo-gdr" type="search" placeholder="Search" required autofocus/>
+		<input class="btn mg-top10 fRig" type="submit" value="Buscar" />	
+	</fildset>
+	<fildset>
+		<legend>Login</legend>
+			<input class="campos campo-gdr" type="email" placeholder="E-mail" autocomplete="on"/>
+			<input class="campos campo-gdr mg-top10" type="password" placeholder="Password" required/>
+			<input class="btn mg-top10 fRig" type="submit" value="Enviar" />
+	</fildset>
+	<fildset>
+		<legend>I was born in:</legend>
+		<input class="campos campo-pqn" type="date" required/>
+	</fildset>
+	<fildset>
+		<legend>Please fill the color of the theme:</legend>
+		<input type="color" required/>
+	</fildset>
+	<fildset>
+		<legend>What is your age?:</legend>
+		<input class="campos campo-gdr" type="number" min="0" max="20" step="5" value="3" required/>
+	</fildset>
+	<fildset>
+		<legend>Date with <a class="lnk-externo" href="http://www.whatwg.org/specs/web-apps/current-work/#the-pattern-attribute" title="">pattern</a> - <span class="mini">Regex - [1-9][0-9]{3}\s?[a-zA-Z]{2}</span>:</legend>
+			<input class="campos campo-pqn" type="text" name="dataValidacao" value="" placeholder="YYYY-MM-DD" pattern="[1-9][0-9]{3}\s?[a-zA-Z]{2}" required="">
+		</fildset>
+	<fildset>
+		<legend>Select price range:</legend>
+		<input id="slider-preco" type="range" min="0" max="20" step="5" value="8" required  onchange="printValue('slider-preco','range-value')"/>
+		<input id="range-value" type="text"/>
+	</fildset>
+	</form>
+<footer>
+	<p>Apenas um experimento.</p>
+</footer>
+<script>
+	function printValue(sliderID, textbox) {
+            var x = document.getElementById(textbox);
+            var y = document.getElementById(sliderID);
+            x.value = y.value;
+        }
+        window.onload = function() { 
+			printValue('slider-preco','range-value');
+        }
+
+</script>
+</body>
+</html>
